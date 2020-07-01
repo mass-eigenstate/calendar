@@ -28,12 +28,13 @@ function dispMonth(mtd, ytd) {
         "September", "October", "November", "December"];
     const dnames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     var dmonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    var id = "";
+    var tdid = "";
     console.log(mnames[mtd] + " " + ytd);
     console.log(document.getElementById("monyr"));
     document.getElementById("monyr").innerHTML = mnames[mtd] + " " + ytd;
     const firstOfMonth = new Date(ytd, mtd, 1);
     var day_of_week = firstOfMonth.getDay();
+    
 
     if (isLeapYear(ytd)) {
         dmonth[1] = 29;
@@ -44,23 +45,23 @@ function dispMonth(mtd, ytd) {
     var dayCount = 1;
     var w = 0;
     for (var nd = 0; nd < 7; nd++) {
-        id = "w" + w + "d" + nd;
+        tdid = "w" + w + "d" + nd;
         if (nd < day_of_week) {                       // Put blanks in until the day of the week that is the fist of the month
-            document.getElementByID(id).innerhtml = "";
+            document.getElementById(tdid).innerHTML = "";
         } else {
-            document.getElementByID(id).innerhtml = str(dayCount);
+            document.getElementById(tdid).innerHTML = dayCount.toString();
             dayCount++;
         }
     }
 
     for (w = 1; w < 5; w++) {
-        for (var nd = 0; nd < 7; nd++) {
-            id = "w" + w + "d" + nd;
-            dayCount++;
-            if (dayCount > dmonth[mtd]) {
-                document.getElementByID(id).innerHTML = "";
+        for (nd = 0; nd < 7; nd++) {
+            tdid = "w" + w + "d" + nd;
+            if (dayCount > dmonth[mtd]) {           // Put blanks after the day of the month
+                document.getElementById(tdid).innerHTML = "";
             } else {
-                document.getElementById(id).innerHTML = str(dayCount);
+                document.getElementById(tdid).innerHTML = dayCount.toString();
+                dayCount++;
             }
         }
     }
