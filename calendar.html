@@ -4,15 +4,27 @@
     <meta charset="UTF-8" />
     <title>Calendar</title>
     <style> /* This is a CSS style sheet: it adds style to the program output */
-    .output { font-weight: bold; }           /* Calculated values in bold */
+    .output { font-weight: bold; }          /* Calculated values in bold */
     #monyr { 
         font-weight: bold;
         font-size: 30px;
         text-align: center;
     }
+    #next {
+        text-align: right;
+        font-size: 24px;
+    }
+    #prev {
+        text-align: left;
+        font-size: 24px;
+    }
+    #week6 {                                /* Week 6 is not shown unless needed */ 
+        display: none;
+    }
+    
     th, td { vertical-align: top; 
         font-size: 24px;
-        }                                       /* Don't center table cells */
+    }                                       /* Don't center table cells */
     table { border-collapse: collapse;}
     td { 
         border: 1px solid black;
@@ -21,12 +33,22 @@
         min-height: 48px;
         text-align: right;
     }
+    .top {
+        display: grid;
+        grid-column-gap: 10px;
+        grid-template-columns: auto auto auto;
+    }
     </style>
     
 </head>
 
 <body>
-    <p id="monyr"> </p>
+    <div class="top">
+        <div id="prev"> <button onclick="prevMonth()">Previous</button> </div>
+        <div id="monyr"> </div>
+        <div id="next"> <button onclick="nextMonth()">Next</button> </div>
+    </div>
+    
     <table>
         <tr id="Header">
             <th>Sunday</th>
@@ -80,6 +102,15 @@
             <td id="w4d4"> </td>
             <td id="w4d5"> </td>
             <td id="w4d6"> </td>
+        </tr>
+        <tr id="week6">
+            <td id="w5d0"> </td>
+            <td id="w5d1"> </td>
+            <td id="w5d2"> </td>
+            <td id="w5d3"> </td>
+            <td id="w5d4"> </td>
+            <td id="w5d5"> </td>
+            <td id="w5d6"> </td>
         </tr>
     </table>
     <script src="calendar.js"></script>

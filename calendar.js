@@ -1,7 +1,7 @@
 /* The default month to display is the current month */
 const today = new Date();
-const mtd = today.getMonth();
-const ytd = today.getFullYear();
+var mtd = today.getMonth();
+var ytd = today.getFullYear();
 console.log(mtd, ytd);
 
 if (document.readyState === 'loading') {  // Loading hasn't finished yet
@@ -21,6 +21,28 @@ function isLeapYear(year) {
     } else {
         return false;
     }
+}
+
+function prevMonth() {
+    if (mtd > 0) {              // If not January just subtract a month
+        mtd--;
+    } else {                    // For Juary go back to previous December
+        mtd = 11;
+        ytd--;
+    }
+    dispMonth(mtd, ytd);
+    return;
+}
+
+function nextMonth() {
+    if (mtd == 11) {              // If not January just subtract a month
+        mtd = 0;
+        ytd++;
+    } else {                    // For Juary go back to previous December
+        mtd++;
+    }
+    dispMonth(mtd, ytd);
+    return;
 }
 
 function dispMonth(mtd, ytd) {
