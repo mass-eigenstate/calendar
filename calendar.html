@@ -3,41 +3,39 @@
 <head>
     <meta charset="UTF-8" />
     <title>Calendar</title>
+
     <style> /* This is a CSS style sheet: it adds style to the program output */
-    .output { font-weight: bold; }          /* Calculated values in bold */
-    #monyr { 
-        font-weight: bold;
-        font-size: 30px;
-        text-align: center;
-    }
-    #next {
-        text-align: right;
-        font-size: 24px;
-    }
-    #prev {
-        text-align: left;
-        font-size: 24px;
-    }
-    #week6 {                                /* Week 6 is not shown unless needed */ 
-        display: none;
-    }
-    
-    th, td { vertical-align: top; 
-        font-size: 24px;
-    }                                       /* Don't center table cells */
-    table { border-collapse: collapse;}
-    td { 
-        border: 1px solid black;
-        font-size: 24px;
-        min-width: 8em;
-        min-height: 48px;
-        text-align: right;
-    }
-    .top {
-        display: grid;
-        grid-column-gap: 10px;
-        grid-template-columns: auto auto auto;
-    }
+        #monyr { 
+            font-weight: bold;
+            font-size: 30px;
+            text-align: center;
+        }
+        #next {
+            text-align: right;
+            font-size: 24px;
+        }
+        #prev {
+            text-align: left;
+            font-size: 24px;
+        }
+        .top {
+            display: grid;
+            grid-column-gap: 10px;
+            grid-template-columns: auto auto auto;
+        }
+        /* Styles for the calendar */
+        table { border-collapse: collapse;}                                   
+        
+        td, th { vertical-align: top; 
+            font-size: 24px;
+            border: 1px solid black;
+            min-width: 8em;
+            min-height: 48px;
+        }
+        
+        td { text-align: right; }
+        th { text-align: center; }
+
     </style>
     
 </head>

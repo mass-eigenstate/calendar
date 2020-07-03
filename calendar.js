@@ -57,6 +57,13 @@ function dispMonth(mtd, ytd) {
     const firstOfMonth = new Date(ytd, mtd, 1);
     var day_of_week = firstOfMonth.getDay();
     
+    // By default hide the last week
+    var w = 5;
+    for (var nd = 0; nd < 7; nd++) {
+        tdid = "w" + w + "d" + nd;
+        document.getElementById(tdid).style.display="none";                    // Make it hidden
+    }
+
 
     if (isLeapYear(ytd)) {
         dmonth[1] = 29;
@@ -65,11 +72,11 @@ function dispMonth(mtd, ytd) {
     }
 
     var dayCount = 1;
-    var w = 0;
+    w = 0;
     for (var nd = 0; nd < 7; nd++) {
         tdid = "w" + w + "d" + nd;
         if (nd < day_of_week) {                       // Put blanks in until the day of the week that is the fist of the month
-            document.getElementById(tdid).innerHTML = "";
+            document.getElementById(tdid).innerHTML = " ";
         } else {
             document.getElementById(tdid).innerHTML = dayCount.toString();
             dayCount++;
@@ -80,10 +87,25 @@ function dispMonth(mtd, ytd) {
         for (nd = 0; nd < 7; nd++) {
             tdid = "w" + w + "d" + nd;
             if (dayCount > dmonth[mtd]) {           // Put blanks after the day of the month
-                document.getElementById(tdid).innerHTML = "";
+                document.getElementById(tdid).innerHTML = " ";
             } else {
                 document.getElementById(tdid).innerHTML = dayCount.toString();
                 dayCount++;
+            }
+        }
+    }
+    // sometimes you need a sixth row. It is normally hidden. 
+    if (dayCount <= dmonth[mtd]) {
+        w = 5;
+        for (var nd = 0; nd < 7; nd++) {
+            tdid = "w" + w + "d" + nd;
+            document.getElementById(tdid).style.display ="inline-table";                // Make it visible      
+            document.getElementById(tdid).style.minWidth = "8em";                
+            if (dayCount <= dmonth[mtd]) {
+                document.getElementById(tdid).innerHTML = dayCount.toString();
+                dayCount++;
+            } else {
+                document.getElementById(tdid).innerHTML = " ";
             }
         }
     }
